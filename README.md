@@ -24,36 +24,11 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Avijit010325/Avijit010325/main/assets/about-me.svg" width="100%" alt="About Me — Animated Cat Coder"/>
+<img src="./assets/about-me.svg?v=new" width="100%" alt="About Me — Animated Cat Coder"/>
 
 </div>
 
----
 
-## 🖥️ `> whoami`
-
-```ruby
-class Player
-  attr_reader :profile
-
-  def initialize
-    @profile = {
-      alias:      "Avijit Aditya",
-      class:      "Data Scientist / Full-Stack Developer",
-      guild:      "Open Source",
-      location:   "India 🇮🇳",
-      degree:     "BSc Data Science",
-      main_quest: "Mastering AI/ML & building data-driven products",
-      side_quest: "React apps, DBMS, & competitive DSA",
-      weapons:    %w[Python C Java SQL React CSS],
-      fun_fact:   "I turn raw data into insights ☕ → 📊",
-      status:     "🟢 ONLINE — open to collabs"
-    }
-  end
-end
-```
-
----
 
 ## ⚔️ `> cat inventory.txt` — Skill Tree
 

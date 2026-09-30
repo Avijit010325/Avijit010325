@@ -5,6 +5,63 @@
     <stop offset="50%" stop-color="#0d1220"/>
     <stop offset="100%" stop-color="#0a0e17"/>
   </linearGradient>
+
+  <!-- Sky gradient for the top portion -->
+  <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1828" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#0a0e17" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- Sun glow filter -->
+  <filter id="sunGlow" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="6" result="blur1"/>
+    <feGaussianBlur stdDeviation="12" result="blur2"/>
+    <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="sunRayGlow">
+    <feGaussianBlur stdDeviation="1.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="cloudGlitch">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <!-- Cloud clip — extended left so R→L clouds reach the panel separator (cat-local x≈-130) -->
+  <clipPath id="skyClip">
+    <rect x="-140" y="0" width="470" height="95" rx="0"/>
+  </clipPath>
+
+  <!-- Grass glow filter -->
+  <filter id="grassGlow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="grassSoftGlow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- Clock gradient -->
+  <linearGradient id="clockBg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0a1628"/>
+    <stop offset="100%" stop-color="#060d1a"/>
+  </linearGradient>
+  <filter id="clockGlow">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- 3D depth gradient for CODE CAT text -->
+  <linearGradient id="textDepthGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="40%" stop-color="#e0e8ff"/>
+    <stop offset="100%" stop-color="#8898cc"/>
+  </linearGradient>
+  <filter id="textDepthGlow">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
   <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.15"/>
     <stop offset="100%" stop-color="#00F0FF" stop-opacity="0"/>
@@ -30,8 +87,8 @@
     <stop offset="100%" stop-color="#444455"/>
   </linearGradient>
   <linearGradient id="headphoneBand" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#00FF41"/>
-    <stop offset="100%" stop-color="#00cc33"/>
+    <stop offset="0%" stop-color="#c084fc"/>
+    <stop offset="100%" stop-color="#7c3aed"/>
   </linearGradient>
   <radialGradient id="screenLight" cx="0.5" cy="0" r="0.8">
     <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.08"/>
@@ -48,6 +105,12 @@
   <filter id="screenGlowFilter">
     <feGaussianBlur stdDeviation="8" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <!-- Wind ribbon glow filter -->
+  <filter id="windGlow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="3" result="blur1"/>
+    <feGaussianBlur stdDeviation="6" result="blur2"/>
+    <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
   <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#111a2e" stroke-width="0.4"/>
@@ -191,6 +254,114 @@
   </text>
 </g>
 
+<!-- ====== CODE CAT — HORIZONTAL CUT DEPTH TEXT ====== -->
+<g transform="translate(490, 175)">
+
+  <!-- Glitchy vertical separator line -->
+  <line x1="0" y1="0" x2="0" y2="360" stroke="#ffffff" stroke-width="0.8" opacity="0.12">
+    <animate attributeName="opacity" values="0.12;0.38;0.04;0.30;0.12;0.08;0.38;0.12" keyTimes="0;0.1;0.18;0.28;0.45;0.6;0.8;1" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="x1" values="0;0;2;0;-1;0;0;0" keyTimes="0;0.1;0.18;0.28;0.45;0.6;0.8;1" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="0;0;2;0;-1;0;0;0" keyTimes="0;0.1;0.18;0.28;0.45;0.6;0.8;1" dur="3.2s" repeatCount="indefinite"/>
+  </line>
+  <!-- Glitch neon ticks on line -->
+  <line x1="-5" y1="78" x2="5" y2="78" stroke="#00F0FF" stroke-width="1.2" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0;0;0.8;0;0" keyTimes="0;0.09;0.10;0.12;0.44;0.45;0.47;1" dur="3.2s" repeatCount="indefinite"/>
+  </line>
+  <line x1="-5" y1="118" x2="5" y2="118" stroke="#FF00E5" stroke-width="1.2" opacity="0">
+    <animate attributeName="opacity" values="0;0;0;0.9;0;0;0.7;0" keyTimes="0;0.17;0.27;0.28;0.30;0.59;0.79;1" dur="3.2s" repeatCount="indefinite"/>
+  </line>
+  <line x1="-5" y1="50" x2="5" y2="50" stroke="#00FF41" stroke-width="0.8" opacity="0">
+    <animate attributeName="opacity" values="0;0.8;0;0;0;0.6;0;0" keyTimes="0;0.01;0.03;0.44;0.45;0.46;0.48;1" dur="2.7s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- ===== C O D E — horizontal-cut depth layers ===== -->
+  <!-- Shadow/depth layers (offset down+right for 3D) -->
+  <g opacity="0.18">
+    <text x="17" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="#3344aa" font-weight="bold" letter-spacing="4">CODE</text>
+  </g>
+  <g opacity="0.28">
+    <text x="16" y="74" font-family="'Courier New', Courier, monospace" font-size="30" fill="#4455cc" font-weight="bold" letter-spacing="4">CODE</text>
+  </g>
+  <g opacity="0.40">
+    <text x="15" y="73" font-family="'Courier New', Courier, monospace" font-size="30" fill="#6677dd" font-weight="bold" letter-spacing="4">CODE</text>
+  </g>
+
+  <!-- Horizontal slice cuts — glitchy horizontal bands showing through CODE -->
+  <!-- Slice 1: top band -->
+  <clipPath id="codeSlice1"><rect x="12" y="46" width="100" height="8"/></clipPath>
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" filter="url(#textDepthGlow)" clip-path="url(#codeSlice1)" opacity="0.95">CODE
+    <animate attributeName="x" values="14;16;14;13;14" keyTimes="0;0.10;0.11;0.45;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Slice 2: mid band -->
+  <clipPath id="codeSlice2"><rect x="12" y="54" width="100" height="9"/></clipPath>
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#codeSlice2)" opacity="0.92">CODE
+    <animate attributeName="x" values="14;14;12;14;15;14" keyTimes="0;0.09;0.10;0.12;0.44;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Slice 3: lower-mid band -->
+  <clipPath id="codeSlice3"><rect x="12" y="63" width="100" height="8"/></clipPath>
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#codeSlice3)" opacity="0.88">CODE
+    <animate attributeName="x" values="14;14;14;17;14;14" keyTimes="0;0.27;0.28;0.29;0.30;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Slice 4: bottom band -->
+  <clipPath id="codeSlice4"><rect x="12" y="71" width="100" height="6"/></clipPath>
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#codeSlice4)" opacity="0.85">CODE</text>
+
+  <!-- Magenta glitch ghost -->
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="#FF00E5" font-weight="bold" letter-spacing="4" opacity="0">
+    CODE
+    <animate attributeName="opacity" values="0;0.45;0;0;0" keyTimes="0;0.44;0.46;0.47;1" dur="3.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;-3,1;0,0;0,0;0,0" keyTimes="0;0.44;0.46;0.47;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Cyan glitch ghost -->
+  <text x="14" y="75" font-family="'Courier New', Courier, monospace" font-size="30" fill="#00F0FF" font-weight="bold" letter-spacing="4" opacity="0">
+    CODE
+    <animate attributeName="opacity" values="0;0;0.55;0;0" keyTimes="0;0.09;0.10;0.12;1" dur="3.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,0;4,-1;0,0;0,0" keyTimes="0;0.09;0.10;0.12;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- ===== C A T — horizontal-cut depth layers ===== -->
+  <!-- Shadow/depth layers -->
+  <g opacity="0.18">
+    <text x="17" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="#3344aa" font-weight="bold" letter-spacing="4">CAT</text>
+  </g>
+  <g opacity="0.28">
+    <text x="16" y="114" font-family="'Courier New', Courier, monospace" font-size="30" fill="#4455cc" font-weight="bold" letter-spacing="4">CAT</text>
+  </g>
+  <g opacity="0.40">
+    <text x="15" y="113" font-family="'Courier New', Courier, monospace" font-size="30" fill="#6677dd" font-weight="bold" letter-spacing="4">CAT</text>
+  </g>
+
+  <!-- Horizontal slice cuts for CAT -->
+  <clipPath id="catSlice1"><rect x="12" y="87" width="80" height="8"/></clipPath>
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" filter="url(#textDepthGlow)" clip-path="url(#catSlice1)" opacity="0.95">CAT
+    <animate attributeName="x" values="14;14;13;16;14" keyTimes="0;0.27;0.28;0.29;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <clipPath id="catSlice2"><rect x="12" y="95" width="80" height="9"/></clipPath>
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#catSlice2)" opacity="0.92">CAT
+    <animate attributeName="x" values="14;14;14;14;11;14" keyTimes="0;0.59;0.60;0.61;0.62;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <clipPath id="catSlice3"><rect x="12" y="104" width="80" height="7"/></clipPath>
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#catSlice3)" opacity="0.88">CAT
+    <animate attributeName="x" values="14;17;14;14;14" keyTimes="0;0.10;0.11;0.44;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <clipPath id="catSlice4"><rect x="12" y="111" width="80" height="6"/></clipPath>
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="url(#textDepthGrad)" font-weight="bold" letter-spacing="4" clip-path="url(#catSlice4)" opacity="0.85">CAT</text>
+
+  <!-- Magenta glitch ghost CAT -->
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="#FF00E5" font-weight="bold" letter-spacing="4" opacity="0">
+    CAT
+    <animate attributeName="opacity" values="0;0;0.55;0;0" keyTimes="0;0.59;0.60;0.62;1" dur="3.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,0;4,1;0,0;0,0" keyTimes="0;0.59;0.60;0.62;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+  <!-- Cyan glitch ghost CAT -->
+  <text x="14" y="115" font-family="'Courier New', Courier, monospace" font-size="30" fill="#00F0FF" font-weight="bold" letter-spacing="4" opacity="0">
+    CAT
+    <animate attributeName="opacity" values="0;0.48;0;0;0" keyTimes="0;0.27;0.29;0.30;1" dur="3.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0,0;-3,-1;0,0;0,0;0,0" keyTimes="0;0.27;0.29;0.30;1" dur="3.2s" repeatCount="indefinite"/>
+  </text>
+
+</g>
+
 <!-- ====== RIGHT SIDE — ANIMATED CAT AT DESK ====== -->
 <g transform="translate(560, 100)">
 
@@ -198,6 +369,138 @@
   <ellipse cx="115" cy="20" rx="120" ry="40" fill="url(#screenLight)">
     <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
   </ellipse>
+
+  <!-- ====== SKY SCENE — TOP PORTION ABOVE CAT ====== -->
+  <g clip-path="url(#skyClip)">
+    <!-- Sky background gradient overlay -->
+    <rect x="0" y="0" width="320" height="95" fill="url(#skyGrad)" opacity="0.7"/>
+
+    <!-- ====== SUN ====== -->
+    <g transform="translate(60, 42)">
+      <!-- Sun outer glow halo (dims when clouds pass) -->
+      <circle cx="0" cy="0" r="28" fill="#fffbe6" opacity="0">
+        <animate attributeName="opacity" values="0.07;0.13;0.07;0.04;0.10;0.07" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="0" r="20" fill="#fff8d6" opacity="0">
+        <animate attributeName="opacity" values="0.12;0.22;0.12;0.05;0.18;0.12" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Sun core (opaque, glowing) -->
+      <circle cx="0" cy="0" r="11" fill="#fff9e0" filter="url(#sunGlow)">
+        <animate attributeName="opacity" values="0.75;0.95;0.75;0.35;0.65;0.75" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="11;12;11;10;11.5;11" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Sun inner bright spot -->
+      <circle cx="0" cy="0" r="6" fill="#ffffff">
+        <animate attributeName="opacity" values="0.9;1;0.9;0.4;0.75;0.9" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Sun rays — appear when cloud half-covers sun (opacity peaks at cloud-mid) -->
+      <!-- Ray opacity inversely follows cloud coverage: brightest when sun is more exposed -->
+      <g filter="url(#sunRayGlow)" opacity="0">
+        <animate attributeName="opacity" values="0.7;0.9;0.5;0.15;0.6;0.7" keyTimes="0;0.2;0.4;0.55;0.75;1" dur="11s" repeatCount="indefinite"/>
+        <!-- 8 rays -->
+        <line x1="0" y1="-15" x2="0" y2="-24" stroke="#fff9d0" stroke-width="1" stroke-linecap="round"/>
+        <line x1="10.6" y1="-10.6" x2="17" y2="-17" stroke="#fff9d0" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="15" y1="0" x2="24" y2="0" stroke="#fff9d0" stroke-width="1" stroke-linecap="round"/>
+        <line x1="10.6" y1="10.6" x2="17" y2="17" stroke="#fff9d0" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="0" y1="15" x2="0" y2="24" stroke="#fff9d0" stroke-width="1" stroke-linecap="round"/>
+        <line x1="-10.6" y1="10.6" x2="-17" y2="17" stroke="#fff9d0" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="-15" y1="0" x2="-24" y2="0" stroke="#fff9d0" stroke-width="1" stroke-linecap="round"/>
+        <line x1="-10.6" y1="-10.6" x2="-17" y2="-17" stroke="#fff9d0" stroke-width="0.8" stroke-linecap="round"/>
+        <!-- Slow gentle rotation of rays -->
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="40s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Behind-cloud light bleed (soft glow visible when sun is behind cloud) -->
+      <circle cx="0" cy="0" r="18" fill="#fff8d0" opacity="0" filter="url(#sunGlow)">
+        <animate attributeName="opacity" values="0;0;0.08;0.18;0.08;0" keyTimes="0;0.35;0.45;0.55;0.65;1" dur="11s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- ====== CLOUDS — Right-to-Left direction ====== -->
+    <!-- R→L clouds start off-right, travel past left edge of cat area, fade before hitting separator -->
+    <!-- Separator is at cat-local x≈-130 (global 430 - cat-translate 560) -->
+
+    <!-- Cloud R1 (right to left, layer 1) -->
+    <g opacity="0" filter="url(#cloudGlitch)">
+      <animateTransform attributeName="transform" type="translate" values="420,8; -140,8" dur="18s" begin="0s" repeatCount="indefinite"/>
+      <!-- Fade in, hold, then fade out completely before -130 boundary -->
+      <animate attributeName="opacity" values="0;0.60;0.75;0.75;0.40;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="18s" begin="0s" repeatCount="indefinite"/>
+      <!-- Brushy broken cloud shape: horizontal cuts/rectangles -->
+      <rect x="0" y="0" width="90" height="7" rx="3.5" fill="#e8eef5" opacity="0.6"/>
+      <rect x="8" y="5" width="75" height="9" rx="4" fill="#dde5f0" opacity="0.7"/>
+      <rect x="3" y="11" width="85" height="7" rx="3" fill="#e4ecf7" opacity="0.55"/>
+      <!-- Glitch cut slices -->
+      <rect x="15" y="3" width="30" height="3" rx="1" fill="#f0f5ff" opacity="0.3"/>
+      <rect x="55" y="8" width="20" height="2" rx="1" fill="#f0f5ff" opacity="0.2"/>
+      <rect x="0" y="14" width="12" height="2" rx="1" fill="#e8eef5" opacity="0.15"/>
+    </g>
+
+    <!-- Cloud R2 (right to left, layer 2, lower, offset) -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate" values="440,52; -140,52" dur="24s" begin="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.42;0.65;0.65;0.35;0" keyTimes="0;0.05;0.12;0.82;0.93;1" dur="24s" begin="5s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="70" height="6" rx="3" fill="#dde5f2" opacity="0.5"/>
+      <rect x="5" y="4" width="62" height="8" rx="3.5" fill="#d5e0ee" opacity="0.6"/>
+      <rect x="2" y="9" width="68" height="5" rx="2.5" fill="#dde5f0" opacity="0.45"/>
+      <!-- Glitch cuts -->
+      <rect x="20" y="2" width="18" height="2" rx="1" fill="#f0f5ff" opacity="0.25"/>
+      <rect x="48" y="6" width="14" height="2" rx="1" fill="#eef3ff" opacity="0.2"/>
+    </g>
+
+    <!-- Cloud R3 (right to left, small, top area) -->
+    <g opacity="0" filter="url(#cloudGlitch)">
+      <animateTransform attributeName="transform" type="translate" values="400,20; -140,20" dur="28s" begin="11s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.32;0.50;0.50;0.28;0" keyTimes="0;0.05;0.11;0.84;0.94;1" dur="28s" begin="11s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="55" height="5" rx="2.5" fill="#e0e8f5" opacity="0.45"/>
+      <rect x="4" y="4" width="48" height="6" rx="3" fill="#d8e2f0" opacity="0.5"/>
+      <rect x="1" y="8" width="52" height="4" rx="2" fill="#dde5f0" opacity="0.4"/>
+      <!-- Glitch -->
+      <rect x="10" y="1" width="22" height="2" rx="1" fill="#f0f4ff" opacity="0.2"/>
+    </g>
+
+    <!-- ====== CLOUDS — Left-to-Right direction ====== -->
+    <!-- Cloud L1 (left to right, mid height) -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate" values="-100,30; 360,30" dur="20s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.35;0.60;0.60;0.35;0" keyTimes="0;0.07;0.15;0.85;0.93;1" dur="20s" begin="2s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="80" height="6" rx="3" fill="#e4ecf7" opacity="0.5"/>
+      <rect x="6" y="4" width="70" height="8" rx="3.5" fill="#dde5f2" opacity="0.6"/>
+      <rect x="2" y="10" width="76" height="5" rx="2.5" fill="#e0eaf6" opacity="0.45"/>
+      <!-- Glitch cuts -->
+      <rect x="25" y="2" width="25" height="2" rx="1" fill="#f2f6ff" opacity="0.25"/>
+      <rect x="58" y="7" width="16" height="2" rx="1" fill="#eef3ff" opacity="0.18"/>
+      <rect x="5" y="11" width="10" height="2" rx="1" fill="#e8eef5" opacity="0.15"/>
+    </g>
+
+    <!-- Cloud L2 (left to right, top, thin) -->
+    <g opacity="0" filter="url(#cloudGlitch)">
+      <animateTransform attributeName="transform" type="translate" values="-120,10; 340,10" dur="25s" begin="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.25;0.45;0.45;0.25;0" keyTimes="0;0.06;0.13;0.87;0.94;1" dur="25s" begin="7s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="65" height="5" rx="2.5" fill="#e2ecf8" opacity="0.4"/>
+      <rect x="5" y="3" width="57" height="7" rx="3" fill="#d9e4f2" opacity="0.5"/>
+      <rect x="3" y="8" width="62" height="4" rx="2" fill="#dde8f4" opacity="0.38"/>
+      <!-- Glitch -->
+      <rect x="18" y="1" width="20" height="2" rx="1" fill="#f0f4ff" opacity="0.22"/>
+      <rect x="44" y="5" width="12" height="2" rx="1" fill="#eef2ff" opacity="0.15"/>
+    </g>
+
+    <!-- Cloud L3 (left to right, near sun area — creates the half-cover effect) -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate" values="-80,28; 350,28" dur="16s" begin="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.3;0.65;0.65;0.35;0" keyTimes="0;0.06;0.14;0.86;0.94;1" dur="16s" begin="5s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="100" height="7" rx="3.5" fill="#dde6f3" opacity="0.55"/>
+      <rect x="7" y="5" width="88" height="9" rx="4" fill="#d5dff0" opacity="0.65"/>
+      <rect x="3" y="11" width="95" height="6" rx="3" fill="#dae4f2" opacity="0.5"/>
+      <!-- Glitch cuts -->
+      <rect x="30" y="2" width="35" height="3" rx="1" fill="#edf2ff" opacity="0.28"/>
+      <rect x="70" y="8" width="20" height="2" rx="1" fill="#eef3ff" opacity="0.20"/>
+      <rect x="5" y="13" width="15" height="2" rx="1" fill="#e5ecf8" opacity="0.15"/>
+    </g>
+
+    <!-- Sky scene bottom fade -->
+    <rect x="0" y="70" width="320" height="25" fill="url(#bgGrad)" opacity="0.6"/>
+  </g>
 
   <!-- ====== DESK ====== -->
   <rect x="20" y="280" width="280" height="12" rx="3" fill="url(#deskGrad)" stroke="#2a3a5c" stroke-width="0.5"/>
@@ -318,15 +621,69 @@
     <rect x="0" y="5" width="20" height="22" rx="3" fill="#2a3a5c" stroke="#3a4a6c" stroke-width="0.8"/>
     <!-- Handle -->
     <path d="M 20,10 C 28,10 28,22 20,22" fill="none" stroke="#3a4a6c" stroke-width="1.5"/>
-    <!-- Steam -->
-    <path d="M 6,3 Q 8,-5 6,-10" fill="none" stroke="#586776" stroke-width="0.8" opacity="0">
-      <animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite"/>
-      <animate attributeName="d" values="M 6,3 Q 8,-5 6,-10;M 6,3 Q 4,-5 6,-12;M 6,3 Q 8,-5 6,-10" dur="3s" repeatCount="indefinite"/>
+
+    <!-- ====== SMOKEY STEAM ANIMATION ====== -->
+    <!-- Wisp 1 — main central curl, rises and expands -->
+    <path fill="none" stroke="#b0c8d8" stroke-width="2.2" stroke-linecap="round" opacity="0">
+      <animate attributeName="d"
+        values="M 10,3 C 10,3 10,3 10,3;
+                M 10,3 C 12,-4 8,-11 11,-18;
+                M 10,3 C 12,-4 8,-11 11,-18 C 14,-25 9,-30 12,-38;
+                M 10,3 C 12,-4 8,-11 11,-18 C 14,-25 9,-30 12,-38"
+        keyTimes="0;0.3;0.7;1"
+        dur="3.6s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width"
+        values="2.2;2.8;1.8;0.6"
+        keyTimes="0;0.3;0.7;1"
+        dur="3.6s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="opacity"
+        values="0;0.65;0.45;0"
+        keyTimes="0;0.28;0.72;1"
+        dur="3.6s" begin="0s" repeatCount="indefinite"/>
     </path>
-    <path d="M 12,3 Q 14,-4 12,-9" fill="none" stroke="#586776" stroke-width="0.8" opacity="0">
-      <animate attributeName="opacity" values="0;0.4;0" dur="3.5s" begin="0.5s" repeatCount="indefinite"/>
-      <animate attributeName="d" values="M 12,3 Q 14,-4 12,-9;M 12,3 Q 10,-4 12,-11;M 12,3 Q 14,-4 12,-9" dur="3.5s" begin="0.5s" repeatCount="indefinite"/>
+
+    <!-- Wisp 2 — left lean, staggered -->
+    <path fill="none" stroke="#98b8cc" stroke-width="1.8" stroke-linecap="round" opacity="0">
+      <animate attributeName="d"
+        values="M 6,3 C 6,3 6,3 6,3;
+                M 6,3 C 4,-5 7,-12 5,-20;
+                M 6,3 C 4,-5 7,-12 5,-20 C 3,-28 6,-33 4,-40;
+                M 6,3 C 4,-5 7,-12 5,-20 C 3,-28 6,-33 4,-40"
+        keyTimes="0;0.3;0.7;1"
+        dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width"
+        values="1.8;2.4;1.4;0.4"
+        keyTimes="0;0.3;0.7;1"
+        dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity"
+        values="0;0.55;0.35;0"
+        keyTimes="0;0.30;0.75;1"
+        dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
     </path>
+
+    <!-- Wisp 3 — right lean, quickest puff -->
+    <path fill="none" stroke="#c2d8e8" stroke-width="1.5" stroke-linecap="round" opacity="0">
+      <animate attributeName="d"
+        values="M 14,3 C 14,3 14,3 14,3;
+                M 14,3 C 16,-6 13,-13 15,-21;
+                M 14,3 C 16,-6 13,-13 15,-21 C 17,-29 14,-34 16,-42;
+                M 14,3 C 16,-6 13,-13 15,-21 C 17,-29 14,-34 16,-42"
+        keyTimes="0;0.3;0.7;1"
+        dur="3.0s" begin="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width"
+        values="1.5;2.0;1.2;0.3"
+        keyTimes="0;0.3;0.7;1"
+        dur="3.0s" begin="1.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity"
+        values="0;0.50;0.30;0"
+        keyTimes="0;0.28;0.73;1"
+        dur="3.0s" begin="1.6s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Soft glow blob at mug rim — warm steam source -->
+    <ellipse cx="10" cy="4" rx="8" ry="3" fill="#8ab0c8" opacity="0">
+      <animate attributeName="opacity" values="0;0.18;0.10;0.18;0" keyTimes="0;0.2;0.5;0.8;1" dur="3.6s" repeatCount="indefinite"/>
+    </ellipse>
   </g>
 
   <!-- ====== GAMING CHAIR ====== -->
@@ -472,31 +829,49 @@
       <!-- Headband -->
       <path d="M 88,175 C 88,148 152,148 152,175" fill="none" stroke="url(#headphoneBand)" stroke-width="4" stroke-linecap="round"/>
       <!-- Headband glow -->
-      <path d="M 88,175 C 88,148 152,148 152,175" fill="none" stroke="#00FF41" stroke-width="4" stroke-linecap="round" opacity="0.3" filter="url(#glow)">
-        <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+      <path d="M 88,175 C 88,148 152,148 152,175" fill="none" stroke="#a855f7" stroke-width="4" stroke-linecap="round" opacity="0.3" filter="url(#glow)">
+        <animate attributeName="opacity" values="0.2;0.55;0.2" dur="3s" repeatCount="indefinite"/>
       </path>
 
       <!-- Left ear cup -->
-      <ellipse cx="87" cy="183" rx="10" ry="14" fill="#1e293b" stroke="#00FF41" stroke-width="1.5"/>
-      <ellipse cx="87" cy="183" rx="6" ry="9" fill="#0f172a"/>
-      <!-- Speaker mesh -->
-      <line x1="84" y1="178" x2="90" y2="178" stroke="#2a3a5c" stroke-width="0.5"/>
-      <line x1="83" y1="182" x2="91" y2="182" stroke="#2a3a5c" stroke-width="0.5"/>
-      <line x1="84" y1="186" x2="90" y2="186" stroke="#2a3a5c" stroke-width="0.5"/>
+      <ellipse cx="87" cy="183" rx="10" ry="14" fill="#1e1030" stroke="#a855f7" stroke-width="1.5"/>
+      <ellipse cx="87" cy="183" rx="6" ry="9" fill="#0d0820"/>
+      <!-- Music EQ bars — left cup -->
+      <rect x="83" y="186" width="1.5" height="3" rx="0.5" fill="#c084fc">
+        <animate attributeName="height" values="3;7;2;6;3" dur="0.6s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="186;182;187;181;186" dur="0.6s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="85.5" y="184" width="1.5" height="5" rx="0.5" fill="#a855f7">
+        <animate attributeName="height" values="5;3;8;2;5" dur="0.5s" begin="0.1s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="184;186;181;187;184" dur="0.5s" begin="0.1s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="88" y="185" width="1.5" height="4" rx="0.5" fill="#c084fc">
+        <animate attributeName="height" values="4;8;3;6;4" dur="0.7s" begin="0.05s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="185;181;186;183;185" dur="0.7s" begin="0.05s" repeatCount="indefinite"/>
+      </rect>
 
       <!-- Right ear cup -->
-      <ellipse cx="153" cy="183" rx="10" ry="14" fill="#1e293b" stroke="#00FF41" stroke-width="1.5"/>
-      <ellipse cx="153" cy="183" rx="6" ry="9" fill="#0f172a"/>
-      <!-- Speaker mesh -->
-      <line x1="150" y1="178" x2="156" y2="178" stroke="#2a3a5c" stroke-width="0.5"/>
-      <line x1="149" y1="182" x2="157" y2="182" stroke="#2a3a5c" stroke-width="0.5"/>
-      <line x1="150" y1="186" x2="156" y2="186" stroke="#2a3a5c" stroke-width="0.5"/>
+      <ellipse cx="153" cy="183" rx="10" ry="14" fill="#1e1030" stroke="#a855f7" stroke-width="1.5"/>
+      <ellipse cx="153" cy="183" rx="6" ry="9" fill="#0d0820"/>
+      <!-- Music EQ bars — right cup -->
+      <rect x="149" y="186" width="1.5" height="3" rx="0.5" fill="#c084fc">
+        <animate attributeName="height" values="3;6;2;8;3" dur="0.55s" begin="0.15s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="186;183;187;181;186" dur="0.55s" begin="0.15s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="151.5" y="184" width="1.5" height="5" rx="0.5" fill="#a855f7">
+        <animate attributeName="height" values="5;2;7;3;5" dur="0.45s" begin="0.08s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="184;187;182;186;184" dur="0.45s" begin="0.08s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="154" y="185" width="1.5" height="4" rx="0.5" fill="#c084fc">
+        <animate attributeName="height" values="4;7;2;5;4" dur="0.65s" begin="0.2s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="185;182;187;184;185" dur="0.65s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
 
-      <!-- Headphone LED indicators -->
-      <circle cx="77" cy="183" r="1.5" fill="#00FF41" filter="url(#glow)">
+      <!-- Headphone LED indicators — purple -->
+      <circle cx="77" cy="183" r="1.5" fill="#c084fc" filter="url(#glow)">
         <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="163" cy="183" r="1.5" fill="#00FF41" filter="url(#glow)">
+      <circle cx="163" cy="183" r="1.5" fill="#c084fc" filter="url(#glow)">
         <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1s" repeatCount="indefinite"/>
       </circle>
     </g>
@@ -531,6 +906,217 @@
     <text x="25" y="28" font-family="'Courier New', Courier, monospace" font-size="5" fill="#586776" text-anchor="middle">CODE</text>
     <text x="25" y="36" font-family="'Courier New', Courier, monospace" font-size="5" fill="#586776" text-anchor="middle">IS ART</text>
   </g>
+
+  <!-- ====== MINI CLOCK — right beside coffee mug ====== -->
+  <!-- Mug is at local (260,255). Clock sits to its left at ~(196,265), width=62 -->
+  <g transform="translate(196, 265)">
+    <!-- Clock body + glow border -->
+    <rect x="0" y="0" width="60" height="13" rx="2.5" fill="url(#clockBg)" stroke="#00F0FF" stroke-width="0.6" opacity="0.9" filter="url(#clockGlow)"/>
+    <!-- Scan shimmer -->
+    <rect x="0" y="0" width="60" height="1.2" rx="0.4" fill="#00F0FF" opacity="0.06">
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,13" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Pulsing live dot -->
+    <circle cx="5" cy="6.5" r="1.5" fill="#00FF41" filter="url(#clockGlow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Live clock via foreignObject -->
+    <foreignObject x="9" y="0" width="50" height="13">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:13px;font-family:'Courier New',monospace;font-size:6px;color:#00FF41;font-weight:bold;letter-spacing:0.5px;box-sizing:border-box;">
+        <span id="clkTime">00:00:00</span>
+      </div>
+    </foreignObject>
+    <script type="text/javascript">
+      <![CDATA[
+        (function(){
+          function p(n){return String(n).padStart(2,'0');}
+          function t(){
+            var n=new Date();
+            var a=document.getElementById('clkTime');
+            if(a)a.textContent=p(n.getHours())+':'+p(n.getMinutes())+':'+p(n.getSeconds());
+          }
+          t();setInterval(t,1000);
+        })();
+      ]]>
+    </script>
+  </g>
+
+  <!-- ====== GLOWING WIND GRASS — left side of cat ====== -->
+  <!-- Grass patch LEFT of the desk area (x around 20-45 in cat-local coords) -->
+  <g filter="url(#grassSoftGlow)">
+    <!-- Blade L1 -->
+    <path d="M 22,380 C 20,365 18,350 22,335" stroke="#00FF41" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.85">
+      <animate attributeName="d" values="M 22,380 C 20,365 18,350 22,335;M 22,380 C 26,364 28,346 24,330;M 22,380 C 20,365 18,350 22,335" dur="2.4s" begin="0s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade L2 -->
+    <path d="M 27,380 C 26,362 24,346 29,330" stroke="#00FF41" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.75">
+      <animate attributeName="d" values="M 27,380 C 26,362 24,346 29,330;M 27,380 C 31,360 34,342 32,325;M 27,380 C 26,362 24,346 29,330" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade L3 (shorter) -->
+    <path d="M 18,380 C 17,368 16,358 19,348" stroke="#00cc33" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.65">
+      <animate attributeName="d" values="M 18,380 C 17,368 16,358 19,348;M 18,380 C 22,366 24,356 23,344;M 18,380 C 17,368 16,358 19,348" dur="3.1s" begin="0.6s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade L4 -->
+    <path d="M 32,380 C 31,360 30,342 35,328" stroke="#00FF41" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.70">
+      <animate attributeName="d" values="M 32,380 C 31,360 30,342 35,328;M 32,380 C 37,357 40,338 38,322;M 32,380 C 31,360 30,342 35,328" dur="2.2s" begin="0.9s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade L5 (very short) -->
+    <path d="M 14,380 C 14,373 13,366 16,360" stroke="#33ff66" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.55">
+      <animate attributeName="d" values="M 14,380 C 14,373 13,366 16,360;M 14,380 C 17,372 19,364 20,357;M 14,380 C 14,373 13,366 16,360" dur="3.5s" begin="1.2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade L6 -->
+    <path d="M 38,380 C 37,358 36,338 41,322" stroke="#00ee44" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.65">
+      <animate attributeName="d" values="M 38,380 C 37,358 36,338 41,322;M 38,380 C 43,355 47,334 44,318;M 38,380 C 37,358 36,338 41,322" dur="2.6s" begin="0.15s" repeatCount="indefinite"/>
+    </path>
+    <!-- Glow dots at tips -->
+    <circle cx="22" cy="335" r="1.5" fill="#00FF41" opacity="0.5">
+      <animate attributeName="cx" values="22;24;22" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="335;330;335" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="29" cy="330" r="1.2" fill="#00FF41" opacity="0.45">
+      <animate attributeName="cx" values="29;32;29" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="330;325;330" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ====== GLOWING WIND GRASS — right side of cat ====== -->
+  <!-- Grass patch RIGHT of the desk (x around 270-300 in cat-local coords) -->
+  <g filter="url(#grassSoftGlow)">
+    <!-- Blade R1 -->
+    <path d="M 275,380 C 273,363 271,346 275,330" stroke="#00FF41" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.85">
+      <animate attributeName="d" values="M 275,380 C 273,363 271,346 275,330;M 275,380 C 279,361 281,343 278,327;M 275,380 C 273,363 271,346 275,330" dur="2.5s" begin="0.2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade R2 -->
+    <path d="M 281,380 C 280,360 279,341 284,325" stroke="#00FF41" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.75">
+      <animate attributeName="d" values="M 281,380 C 280,360 279,341 284,325;M 281,380 C 286,357 289,338 286,321;M 281,380 C 280,360 279,341 284,325" dur="2.9s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade R3 -->
+    <path d="M 270,380 C 269,366 268,354 271,343" stroke="#00cc33" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.65">
+      <animate attributeName="d" values="M 270,380 C 269,366 268,354 271,343;M 270,380 C 274,363 276,351 274,339;M 270,380 C 269,366 268,354 271,343" dur="3.2s" begin="0.8s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade R4 -->
+    <path d="M 287,380 C 285,358 284,338 289,322" stroke="#00FF41" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.70">
+      <animate attributeName="d" values="M 287,380 C 285,358 284,338 289,322;M 287,380 C 292,354 295,334 292,318;M 287,380 C 285,358 284,338 289,322" dur="2.3s" begin="1.1s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade R5 (short) -->
+    <path d="M 265,380 C 265,371 264,364 267,357" stroke="#33ff66" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.55">
+      <animate attributeName="d" values="M 265,380 C 265,371 264,364 267,357;M 265,380 C 268,369 271,361 271,354;M 265,380 C 265,371 264,364 267,357" dur="3.6s" begin="1.4s" repeatCount="indefinite"/>
+    </path>
+    <!-- Blade R6 -->
+    <path d="M 293,380 C 292,356 290,334 295,317" stroke="#00ee44" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.65">
+      <animate attributeName="d" values="M 293,380 C 292,356 290,334 295,317;M 293,380 C 298,352 302,329 298,313;M 293,380 C 292,356 290,334 295,317" dur="2.7s" begin="0.35s" repeatCount="indefinite"/>
+    </path>
+    <!-- Glow dots at tips -->
+    <circle cx="275" cy="330" r="1.5" fill="#00FF41" opacity="0.5">
+      <animate attributeName="cx" values="275;278;275" dur="2.5s" begin="0.2s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="330;327;330" dur="2.5s" begin="0.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2.5s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="284" cy="325" r="1.2" fill="#00FF41" opacity="0.45">
+      <animate attributeName="cx" values="284;287;284" dur="2.9s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="325;322;325" dur="2.9s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ====== WIND — Soothing Glowing Gusts and Particles ====== -->
+  <defs>
+    <clipPath id="windClip">
+      <rect x="-10" y="305" width="340" height="80"/>
+    </clipPath>
+    <filter id="windSoothingGlow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="blur1"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur2"/>
+      <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <g clip-path="url(#windClip)" filter="url(#windSoothingGlow)">
+
+    <!-- ════ LEFT → RIGHT gusts ════ -->
+
+    <!-- LR-1 | Gentle sweeping wave with particles -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="-120,342; 340,342" dur="10s" begin="0s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.5;0.5;0.5;0" keyTimes="0;0.15;0.50;0.85;1"
+        dur="10s" begin="0s" repeatCount="indefinite"/>
+      <!-- Main breeze line -->
+      <path d="M0,0 Q 30,-12 60,0 T 120,0" fill="none" stroke="#d5e8fc" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <path d="M0,0 Q 30,-12 60,0 T 120,0" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-linecap="round" opacity="0.9"/>
+      <!-- Trailing particles (dashed) -->
+      <path d="M -30,0 Q 0,-12 30,0 T 90,0" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-dasharray="2,8,4,12,1,10,3,15" opacity="0.7"/>
+      <path d="M -10,4 Q 20,-8 50,4 T 110,4" fill="none" stroke="#b0d4f8" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="1,12,3,8,2,20" opacity="0.5"/>
+    </g>
+
+    <!-- LR-2 | Low near ground -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="-100,362; 330,362" dur="12s" begin="3.5s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.4;0.4;0.4;0" keyTimes="0;0.12;0.50;0.88;1"
+        dur="12s" begin="3.5s" repeatCount="indefinite"/>
+      <path d="M0,0 Q 25,-8 50,0 T 100,0" fill="none" stroke="#c0dcf6" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M -20,-2 Q 15,-10 40,-2 T 80,-2" fill="none" stroke="#eaf4ff" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,10,1,15,4,8" opacity="0.8"/>
+      <path d="M 10,3 Q 30,-5 50,3 T 90,3" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-linecap="round" stroke-dasharray="1,6,2,12" opacity="0.6"/>
+    </g>
+
+    <!-- LR-3 | Fast upper puff -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="-100,328; 330,328" dur="8s" begin="1.2s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.45;0.45;0.45;0" keyTimes="0;0.15;0.50;0.85;1"
+        dur="8s" begin="1.2s" repeatCount="indefinite"/>
+      <path d="M0,0 Q 20,-10 40,0 T 80,0" fill="none" stroke="#d5e8fc" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+      <path d="M0,0 Q 20,-10 40,0 T 80,0" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-linecap="round" opacity="0.8"/>
+      <path d="M -25,2 Q -5,-8 15,2 T 55,2" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2,6,1,10,3,14" opacity="0.7"/>
+    </g>
+
+    <!-- ════ RIGHT → LEFT gusts (Opposite side) ════ -->
+
+    <!-- RL-1 | mid height -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="330,348; -120,348" dur="11s" begin="2s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.5;0.5;0.5;0" keyTimes="0;0.15;0.50;0.85;1"
+        dur="11s" begin="2s" repeatCount="indefinite"/>
+      <!-- Mirrored shapes -->
+      <path d="M0,0 Q -30,-12 -60,0 T -120,0" fill="none" stroke="#d5e8fc" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <path d="M0,0 Q -30,-12 -60,0 T -120,0" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-linecap="round" opacity="0.9"/>
+      <!-- Trailing particles (dashed) -->
+      <path d="M 30,0 Q 0,-12 -30,0 T -90,0" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-dasharray="2,8,4,12,1,10,3,15" opacity="0.7"/>
+      <path d="M 10,4 Q -20,-8 -50,4 T -110,4" fill="none" stroke="#b0d4f8" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="1,12,3,8,2,20" opacity="0.5"/>
+    </g>
+
+    <!-- RL-2 | low near ground -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="330,368; -100,368" dur="13s" begin="6s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.4;0.4;0.4;0" keyTimes="0;0.12;0.50;0.88;1"
+        dur="13s" begin="6s" repeatCount="indefinite"/>
+      <path d="M0,0 Q -25,-8 -50,0 T -100,0" fill="none" stroke="#c0dcf6" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M 20,-2 Q -15,-10 -40,-2 T -80,-2" fill="none" stroke="#eaf4ff" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,10,1,15,4,8" opacity="0.8"/>
+      <path d="M -10,3 Q -30,-5 -50,3 T -90,3" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-linecap="round" stroke-dasharray="1,6,2,12" opacity="0.6"/>
+    </g>
+
+    <!-- RL-3 | fast upper puff -->
+    <g opacity="0">
+      <animateTransform attributeName="transform" type="translate"
+        values="330,335; -100,335" dur="9s" begin="4.5s" repeatCount="indefinite" calcMode="linear"/>
+      <animate attributeName="opacity"
+        values="0;0.45;0.45;0.45;0" keyTimes="0;0.15;0.50;0.85;1"
+        dur="9s" begin="4.5s" repeatCount="indefinite"/>
+      <path d="M0,0 Q -20,-10 -40,0 T -80,0" fill="none" stroke="#d5e8fc" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+      <path d="M0,0 Q -20,-10 -40,0 T -80,0" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 25,2 Q 5,-8 -15,2 T -55,2" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2,6,1,10,3,14" opacity="0.7"/>
+    </g>
+
+  </g>
+
 </g>
 
 <!-- ====== BOTTOM BAR — SOCIAL LINKS ====== -->
