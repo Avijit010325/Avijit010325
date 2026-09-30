@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="430" viewBox="0 0 850 430">
+<defs>
+  <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#111a2e" stroke-width="0.5"/>
+  </pattern>
+  <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#00FF41" stop-opacity="0"/>
+    <stop offset="40%" stop-color="#00FF41" stop-opacity="0.08"/>
+    <stop offset="50%" stop-color="#00FF41" stop-opacity="0.18"/>
+    <stop offset="60%" stop-color="#00FF41" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#00FF41" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="nameGlow">
+    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <clipPath id="cardClip">
+    <rect width="850" height="430" rx="12"/>
+  </clipPath>
+</defs>
+
+<g clip-path="url(#cardClip)">
+
+  <!-- ====== BACKGROUND ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;1;0;0" keyTimes="0;0.03;0.08;0.84;0.88;0.95;1" dur="12s" repeatCount="indefinite"/>
+
+    <rect width="850" height="430" fill="#0a0e17"/>
+    <rect width="850" height="430" fill="url(#grid)" opacity="0.6"/>
+    <rect x="1" y="1" width="848" height="428" rx="12" fill="none" stroke="#1a2744" stroke-width="1"/>
+
+    <!-- Animated border travel -->
+    <rect x="1" y="1" width="848" height="428" rx="12" fill="none"
+      stroke="#00FF41" stroke-width="1.5" opacity="0.35" stroke-dasharray="60 2480">
+      <animate attributeName="stroke-dashoffset" from="0" to="-2540" dur="8s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Corner brackets -->
+    <path d="M 8,22 L 8,8 L 22,8" stroke="#00FF41" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 828,8 L 842,8 L 842,22" stroke="#00FF41" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 8,408 L 8,422 L 22,422" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 828,422 L 842,422 L 842,408" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+    <!-- Scanline -->
+    <rect x="0" y="-4" width="850" height="2" fill="url(#scanGrad)">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="0 438" dur="3.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- ====== HEADER BAR ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.04;0.07;0.14;0.80;0.84;0.92;1" dur="12s" repeatCount="indefinite"/>
+
+    <!-- Status dot with pulse -->
+    <circle cx="42" cy="42" r="3.5" fill="#00FF41" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="56" y="46" font-family="'Courier New', Courier, monospace" font-size="11" fill="#8B949E" letter-spacing="1.5" font-weight="bold">DATA SCIENTIST / LIVING IDENTITY</text>
+    <text x="808" y="46" font-family="'Courier New', Courier, monospace" font-size="11" fill="#586776" text-anchor="end" letter-spacing="1">@avijit010325</text>
+
+    <!-- Header line with draw-in effect -->
+    <line x1="35" y1="62" x2="815" y2="62" stroke="#1a2744" stroke-width="0.5" stroke-dasharray="780" stroke-dashoffset="780">
+      <animate attributeName="stroke-dashoffset" values="780;780;0;0;-780;-780" keyTimes="0;0.06;0.16;0.82;0.92;1" dur="12s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- ====== HELLO TEXT ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.12;0.16;0.24;0.78;0.82;0.90;1" dur="12s" repeatCount="indefinite"/>
+
+    <text x="42" y="118" font-family="'Courier New', Courier, monospace" font-size="15" fill="#00FF41" font-weight="bold" letter-spacing="1.5" filter="url(#glow)">HELLO, WORLD. I'M</text>
+
+    <!-- Blinking cursor -->
+    <text x="240" y="118" font-family="'Courier New', Courier, monospace" font-size="15" fill="#00FF41" filter="url(#glow)">
+      _
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.49;0.50;1" dur="1s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- ====== NAME — AVIJIT ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.18;0.22;0.32;0.76;0.80;0.88;1" dur="12s" repeatCount="indefinite"/>
+
+    <!-- Glitch copy — magenta -->
+    <text x="42" y="192" font-family="'Courier New', Courier, monospace" font-size="64" fill="#FF00E5" font-weight="bold" letter-spacing="5" opacity="0">
+      AVIJIT
+      <animate attributeName="opacity" values="0;0;0.7;0;0;0.5;0;0" keyTimes="0;0.02;0.03;0.05;0.17;0.18;0.20;1" dur="2.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 0;4 -2;0 0;0 0;-3 1;0 0;0 0" keyTimes="0;0.02;0.03;0.05;0.17;0.18;0.20;1" dur="2.5s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Glitch copy — cyan -->
+    <text x="42" y="192" font-family="'Courier New', Courier, monospace" font-size="64" fill="#00F0FF" font-weight="bold" letter-spacing="5" opacity="0">
+      AVIJIT
+      <animate attributeName="opacity" values="0;0;0;0.6;0;0;0.4;0;0" keyTimes="0;0.02;0.03;0.04;0.06;0.18;0.19;0.21;1" dur="2.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 0;-3 2;0 0;0 0;2 -1;0 0;0 0" keyTimes="0;0.02;0.03;0.04;0.06;0.18;0.19;0.21;1" dur="2.5s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Main text -->
+    <text x="42" y="192" font-family="'Courier New', Courier, monospace" font-size="64" fill="#E6EDF3" font-weight="bold" letter-spacing="5" filter="url(#nameGlow)">AVIJIT</text>
+  </g>
+
+  <!-- ====== NAME — ADITYA ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.22;0.26;0.36;0.76;0.80;0.88;1" dur="12s" repeatCount="indefinite"/>
+
+    <!-- Glitch copy — magenta -->
+    <text x="42" y="260" font-family="'Courier New', Courier, monospace" font-size="64" fill="#FF00E5" font-weight="bold" letter-spacing="5" opacity="0">
+      ADITYA
+      <animate attributeName="opacity" values="0;0;0.7;0;0;0.5;0;0" keyTimes="0;0.04;0.05;0.07;0.19;0.20;0.22;1" dur="2.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 0;4 -2;0 0;0 0;-3 1;0 0;0 0" keyTimes="0;0.04;0.05;0.07;0.19;0.20;0.22;1" dur="2.5s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Glitch copy — cyan -->
+    <text x="42" y="260" font-family="'Courier New', Courier, monospace" font-size="64" fill="#00F0FF" font-weight="bold" letter-spacing="5" opacity="0">
+      ADITYA
+      <animate attributeName="opacity" values="0;0;0;0.6;0;0;0.4;0;0" keyTimes="0;0.04;0.05;0.06;0.08;0.20;0.21;0.23;1" dur="2.5s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 0;-3 2;0 0;0 0;2 -1;0 0;0 0" keyTimes="0;0.04;0.05;0.06;0.08;0.20;0.21;0.23;1" dur="2.5s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Main text -->
+    <text x="42" y="260" font-family="'Courier New', Courier, monospace" font-size="64" fill="#E6EDF3" font-weight="bold" letter-spacing="5" filter="url(#nameGlow)">ADITYA</text>
+  </g>
+
+  <!-- ====== DETAILS ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.30;0.34;0.43;0.74;0.78;0.86;1" dur="12s" repeatCount="indefinite"/>
+
+    <text x="42" y="298" font-family="'Courier New', Courier, monospace" font-size="13" fill="#00F0FF" letter-spacing="1.2" font-weight="bold">Python / Data Science / AI·ML</text>
+    <text x="42" y="320" font-family="'Courier New', Courier, monospace" font-size="12" fill="#586776" letter-spacing="0.5">India · BSc Data Science</text>
+  </g>
+
+  <!-- ====== GEOMETRIC ELEMENT ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.14;0.18;0.30;0.80;0.84;0.92;1" dur="12s" repeatCount="indefinite"/>
+
+    <g transform="translate(670, 210)">
+
+      <!-- Outer ring — slow CW -->
+      <circle cx="0" cy="0" r="115" fill="none" stroke="#1a2744" stroke-width="1" stroke-dasharray="12 8">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="25s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Middle ring — medium CCW -->
+      <circle cx="0" cy="0" r="82" fill="none" stroke="#00FF41" stroke-width="0.8" stroke-dasharray="4 10" opacity="0.25">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="-360 0 0" dur="18s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Inner ring — fast CW -->
+      <circle cx="0" cy="0" r="50" fill="none" stroke="#00F0FF" stroke-width="0.6" stroke-dasharray="2 7" opacity="0.2">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="12s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Outer hexagon -->
+      <polygon points="0,-28 24.2,-14 24.2,14 0,28 -24.2,14 -24.2,-14"
+        fill="none" stroke="#00FF41" stroke-width="0.8" opacity="0.25"/>
+      <!-- Inner hexagon -->
+      <polygon points="0,-18 15.6,-9 15.6,9 0,18 -15.6,9 -15.6,-9"
+        fill="none" stroke="#00FF41" stroke-width="1.2" opacity="0.6"/>
+
+      <!-- Center dot with pulse -->
+      <circle cx="0" cy="0" r="6" fill="#00FF41" filter="url(#glow)">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="0" r="2.5" fill="#ffffff" opacity="0.9"/>
+
+      <!-- Orbiting dot 1 — green, r=98, CW 7s -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="7s" repeatCount="indefinite"/>
+        <circle cx="98" cy="0" r="3.5" fill="#00FF41" opacity="0.85" filter="url(#glow)"/>
+      </g>
+
+      <!-- Orbiting dot 2 — cyan, r=72, CCW 9s -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="-360 0 0" dur="9s" repeatCount="indefinite"/>
+        <circle cx="72" cy="0" r="2.5" fill="#00F0FF" opacity="0.7"/>
+      </g>
+
+      <!-- Orbiting dot 3 — magenta, r=58, CW 13s -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="13s" repeatCount="indefinite"/>
+        <circle cx="58" cy="0" r="2" fill="#FF00E5" opacity="0.6"/>
+      </g>
+
+      <!-- Orbiting dot 4 — green faint, r=108, CCW 20s -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="90 0 0" to="-270 0 0" dur="20s" repeatCount="indefinite"/>
+        <circle cx="108" cy="0" r="2" fill="#00FF41" opacity="0.35"/>
+      </g>
+
+    </g>
+  </g>
+
+  <!-- ====== STATS BAR ====== -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;0;1;1;1;0;0" keyTimes="0;0.38;0.42;0.52;0.72;0.76;0.84;1" dur="12s" repeatCount="indefinite"/>
+
+    <line x1="35" y1="355" x2="815" y2="355" stroke="#1a2744" stroke-width="0.5"/>
+
+    <!-- Labels -->
+    <text x="130" y="380" font-family="'Courier New', Courier, monospace" font-size="9.5" fill="#586776" text-anchor="middle" letter-spacing="1.8" font-weight="bold">REPOSITORIES</text>
+    <text x="330" y="380" font-family="'Courier New', Courier, monospace" font-size="9.5" fill="#586776" text-anchor="middle" letter-spacing="1.8" font-weight="bold">STARS</text>
+    <text x="530" y="380" font-family="'Courier New', Courier, monospace" font-size="9.5" fill="#586776" text-anchor="middle" letter-spacing="1.8" font-weight="bold">CONTRIBUTIONS</text>
+    <text x="720" y="380" font-family="'Courier New', Courier, monospace" font-size="9.5" fill="#586776" text-anchor="middle" letter-spacing="1.8" font-weight="bold">FOLLOWERS</text>
+
+    <!-- Dot separators with staggered pulse -->
+    <circle cx="230" cy="393" r="2.5" fill="#00F0FF" opacity="0.45">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="430" cy="393" r="2.5" fill="#00FF41" opacity="0.45">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="625" cy="393" r="2.5" fill="#FF00E5" opacity="0.45">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Numbers -->
+    <text x="130" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">7</text>
+    <text x="330" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">6</text>
+    <text x="530" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">29</text>
+    <text x="720" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">1</text>
+  </g>
+
+</g>
+</svg>

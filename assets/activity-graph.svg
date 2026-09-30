@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="280" viewBox="0 0 850 280">
+<defs>
+  <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#00FF41" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#00FF41" stop-opacity="0.02"/>
+  </linearGradient>
+  <linearGradient id="scanLine" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#00FF41" stop-opacity="0"/>
+    <stop offset="45%" stop-color="#00FF41" stop-opacity="0.12"/>
+    <stop offset="50%" stop-color="#00FF41" stop-opacity="0.25"/>
+    <stop offset="55%" stop-color="#00FF41" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#00FF41" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="dotGlow">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <clipPath id="graphClip">
+    <rect x="70" y="30" width="750" height="180"/>
+  </clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="850" height="280" rx="12" fill="#0a0e17"/>
+<rect width="850" height="280" rx="12" fill="none" stroke="#1a2744" stroke-width="1"/>
+
+<!-- Animated border -->
+<rect x="1" y="1" width="848" height="278" rx="12" fill="none"
+  stroke="#00FF41" stroke-width="1" opacity="0.2" stroke-dasharray="50 2200">
+  <animate attributeName="stroke-dashoffset" from="0" to="-2250" dur="10s" repeatCount="indefinite"/>
+</rect>
+
+<!-- Title -->
+<text x="42" y="22" font-family="'Courier New', Courier, monospace" font-size="11" fill="#586776" letter-spacing="1.5">CONTRIBUTION MATRIX</text>
+<circle cx="820" cy="17" r="3" fill="#00FF41" opacity="0.6">
+  <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+</circle>
+
+<!-- Grid lines (horizontal) -->
+<line x1="70" y1="60" x2="820" y2="60" stroke="#1a2744" stroke-width="0.5" opacity="0.5"/>
+<line x1="70" y1="100" x2="820" y2="100" stroke="#1a2744" stroke-width="0.5" opacity="0.5"/>
+<line x1="70" y1="140" x2="820" y2="140" stroke="#1a2744" stroke-width="0.5" opacity="0.5"/>
+<line x1="70" y1="180" x2="820" y2="180" stroke="#1a2744" stroke-width="0.5" opacity="0.5"/>
+
+<!-- Y-axis labels -->
+<text x="60" y="44" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="end">8</text>
+<text x="60" y="64" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="end">6</text>
+<text x="60" y="104" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="end">4</text>
+<text x="60" y="144" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="end">2</text>
+<text x="60" y="184" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="end">0</text>
+
+<!-- X-axis labels (months) -->
+<text x="95" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Mar</text>
+<text x="175" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Apr</text>
+<text x="255" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">May</text>
+<text x="335" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Jun</text>
+<text x="415" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Jul</text>
+<text x="495" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Aug</text>
+<text x="575" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Sep</text>
+<text x="655" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Oct</text>
+<text x="735" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Nov</text>
+<text x="800" y="210" font-family="'Courier New', Courier, monospace" font-size="9" fill="#586776" text-anchor="middle">Dec</text>
+
+<g clip-path="url(#graphClip)">
+
+  <!-- Area fill under curve -->
+  <polygon points="70,190 95,170 120,175 145,160 170,165 195,150 220,155 245,130 270,140 295,125 320,120 345,135 370,110 395,105 420,115 445,90 470,100 495,80 520,95 545,70 570,85 595,60 620,75 645,50 670,65 695,55 720,70 745,62 770,78 795,45 820,55 820,190" fill="url(#areaFill)"/>
+
+  <!-- Main line with draw animation -->
+  <polyline points="70,170 95,170 120,175 145,160 170,165 195,150 220,155 245,130 270,140 295,125 320,120 345,135 370,110 395,105 420,115 445,90 470,100 495,80 520,95 545,70 570,85 595,60 620,75 645,50 670,65 695,55 720,70 745,62 770,78 795,45 820,55"
+    fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    stroke-dasharray="1200" stroke-dashoffset="1200" filter="url(#glow)">
+    <animate attributeName="stroke-dashoffset" from="1200" to="0" dur="3s" fill="freeze"/>
+  </polyline>
+
+  <!-- Secondary line (contributions trend) -->
+  <polyline points="70,185 95,180 120,182 145,175 170,178 195,168 220,172 245,155 270,162 295,152 320,148 345,158 370,140 395,138 420,145 445,125 470,132 495,118 520,128 545,108 570,120 595,100 620,112 645,92 670,105 695,95 720,108 745,100 770,115 795,85 820,95"
+    fill="none" stroke="#FF00E5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"
+    stroke-dasharray="6 4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+  </polyline>
+
+  <!-- Data points on main line with staggered pop-in -->
+  <circle cx="145" cy="160" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="0.8s" fill="freeze"/>
+  </circle>
+  <circle cx="245" cy="130" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="1.2s" fill="freeze"/>
+  </circle>
+  <circle cx="370" cy="110" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="1.7s" fill="freeze"/>
+  </circle>
+  <circle cx="445" cy="90" r="0" fill="#00FF41" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="4" dur="0.3s" begin="2.0s" fill="freeze"/>
+  </circle>
+  <circle cx="545" cy="70" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="2.3s" fill="freeze"/>
+  </circle>
+  <circle cx="595" cy="60" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="2.5s" fill="freeze"/>
+  </circle>
+  <circle cx="645" cy="50" r="0" fill="#00FF41" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="4.5" dur="0.3s" begin="2.7s" fill="freeze"/>
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" begin="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="695" cy="55" r="0" fill="#00F0FF" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="2.8s" fill="freeze"/>
+  </circle>
+  <circle cx="795" cy="45" r="0" fill="#FF00E5" filter="url(#dotGlow)">
+    <animate attributeName="r" from="0" to="5" dur="0.3s" begin="3.0s" fill="freeze"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" begin="3.3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Vertical scan sweep -->
+  <rect x="0" y="30" width="3" height="180" fill="url(#scanLine)">
+    <animateTransform attributeName="transform" type="translate" from="70 0" to="820 0" dur="6s" repeatCount="indefinite"/>
+  </rect>
+
+</g>
+
+<!-- Bottom separator -->
+<line x1="42" y1="225" x2="808" y2="225" stroke="#1a2744" stroke-width="0.5"/>
+
+<!-- Legend -->
+<circle cx="200" cy="248" r="4" fill="#00F0FF"/>
+<text x="212" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Commits</text>
+
+<circle cx="300" cy="248" r="4" fill="#FF00E5" opacity="0.6"/>
+<text x="312" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Trend</text>
+
+<circle cx="390" cy="248" r="4" fill="#00FF41"/>
+<text x="402" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#8B949E">Peak Activity</text>
+
+<!-- Stats badges -->
+<text x="570" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#586776">TOTAL:</text>
+<text x="620" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#00FF41" font-weight="bold" filter="url(#glow)">29</text>
+
+<text x="660" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#586776">PEAK:</text>
+<text x="703" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#FF00E5" font-weight="bold">8</text>
+
+<text x="730" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#586776">AVG:</text>
+<text x="765" y="252" font-family="'Courier New', Courier, monospace" font-size="10" fill="#00F0FF" font-weight="bold">2.4</text>
+
+<!-- Corner brackets -->
+<path d="M 6,18 L 6,6 L 18,6" stroke="#00FF41" stroke-width="1.5" fill="none" opacity="0.4"/>
+<path d="M 832,6 L 844,6 L 844,18" stroke="#00FF41" stroke-width="1.5" fill="none" opacity="0.4"/>
+<path d="M 6,262 L 6,274 L 18,274" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.4"/>
+<path d="M 832,274 L 844,274 L 844,262" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+</svg>
