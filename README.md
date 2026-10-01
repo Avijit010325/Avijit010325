@@ -169,3 +169,5 @@ $ exit 0   # GAME OVER? Nah — INSERT COIN TO CONTINUE 🪙
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24,30&height=140&section=footer&text=INSERT%20COIN%20TO%20CONTINUE&fontSize=26&fontColor=00FF41&animation=twinkling&fontAlignY=68" width="100%"/>
 
 </div>
+
+<!-- badge-auto: badge-pr-2 pr2 -->
