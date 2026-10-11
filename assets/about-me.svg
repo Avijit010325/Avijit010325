@@ -184,7 +184,7 @@
   <!-- Point 1 -->
   <text x="42" y="135" font-family="'Courier New', Courier, monospace" font-size="13" fill="#E6EDF3">
     <tspan fill="#FF6B6B" font-size="14">🏅</tspan>
-    <tspan font-weight="bold" fill="#E6EDF3"> Ranked Top 10 in Vibecoding</tspan>
+    <tspan font-weight="bold" fill="#E6EDF3"> Top 1 in Hacktoberfest</tspan>
   </text>
   <text x="62" y="153" font-family="'Courier New', Courier, monospace" font-size="12" fill="#8B949E">
     at Asansol Engineering College
