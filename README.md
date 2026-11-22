@@ -99,7 +99,7 @@
 
 ---
 
-## 🐍 `> ./snake.exe --eat=contributions` &nbsp; ![](https://img.shields.io/badge/🍎_Eaten-57_Contributions-00FF41?style=flat-square&labelColor=0D1117)
+## 🐍 `> ./snake.exe --eat=contributions` &nbsp; ![](https://img.shields.io/badge/🍎_Eaten-19_Contributions-00FF41?style=flat-square&labelColor=0D1117)
 
 <div align="center">
 
