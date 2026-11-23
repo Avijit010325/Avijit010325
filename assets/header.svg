@@ -219,10 +219,10 @@
     </circle>
 
     <!-- Numbers -->
-    <text x="130" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">7</text>
-    <text x="330" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">6</text>
-    <text x="530" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">29</text>
-    <text x="720" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">1</text>
+    <text x="130" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">13</text>
+    <text x="330" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">15</text>
+    <text x="530" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">20</text>
+    <text x="720" y="413" font-family="'Courier New', Courier, monospace" font-size="26" fill="#E6EDF3" text-anchor="middle" font-weight="bold">2</text>
   </g>
 
 </g>
