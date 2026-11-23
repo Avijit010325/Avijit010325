@@ -153,9 +153,9 @@
 
 <div align="center">
 
-<a href="mailto:avijit4840@gmail.com"><img src="https://img.shields.io/badge/M%20GMAIL-avijit4840%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=EA4335" /></a>
-<a href="https://www.linkedin.com/in/avijit-aditya-51a503301"><img src="https://img.shields.io/badge/LINKEDIN-avijit--aditya-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0A66C2" /></a>
-<a href="https://www.instagram.com/not_avi_20/"><img src="https://img.shields.io/badge/📷%20INSTAGRAM-not__avi__20-E4405F?style=for-the-badge&logo=instagram&logoColor=white&labelColor=E4405F" /></a>
+[![Gmail](https://img.shields.io/badge/M%20GMAIL-avijit4840%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=EA4335)](https://mail.google.com/mail/?view=cm&fs=1&to=avijit4840@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-avijit--aditya-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0A66C2)](https://www.linkedin.com/in/avijit-aditya-51a503301)
+[![Instagram](https://img.shields.io/badge/%F0%9F%93%B7%20INSTAGRAM-not__avi__20-E4405F?style=for-the-badge&logo=instagram&logoColor=white&labelColor=E4405F)](https://www.instagram.com/not_avi_20/)
 
 <br/><br/>
 
